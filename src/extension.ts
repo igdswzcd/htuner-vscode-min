@@ -10,27 +10,10 @@ const fs = require('fs');
 export function activate(context: vscode.ExtensionContext) {
   // 注册主题修改监听
   Utils.registerVSCThemeChangeListener();
+  // 初始化全局变量
   Utils.initVscodeCache(context, true);
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log(
-    'Congratulations, your extension "vsc-ext-iframe" is now active!'
-  );
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
-  let disposable = vscode.commands.registerCommand(
-    'vsc-ext-iframe.helloWorld',
-    () => {
-      // The code you place here will be executed every time your command is executed
-      // Display a message box to the user
-      vscode.window.showInformationMessage('Hello World from vsc-ext-iframe!');
-    }
-  );
-
-  context.subscriptions.push(disposable);
-
+  // 关联左侧欢迎树按钮，打开页面
   context.subscriptions.push(
     vscode.commands.registerCommand('vsc-ext-iframe.open', async () => {
       const tuningConfigObj = Utils.getConfigJson(context).tuningConfig[0];
@@ -45,6 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 
+  // 开发时使用的命令，可以使用该指令修改ip:port值
   context.subscriptions.push(
     vscode.commands.registerCommand(
       'vsc-ext-iframe.address',

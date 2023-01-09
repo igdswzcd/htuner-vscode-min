@@ -66,12 +66,12 @@ export class Utils {
         retainContextWhenHidden: true,
       }
     );
-    panel.webview.onDidReceiveMessage((message) => {});
     ToolPanelManager.panels = [{ panel, proxy }];
     // 相应panel的关闭事件
     panel.onDidDispose(() => {
       ToolPanelManager.closePanel();
     }, null);
+    // 检测主题并加入首次post
     let colorTheme = 'dark';
     const colorThemeStr: any = vscode.workspace
       .getConfiguration()
@@ -79,6 +79,7 @@ export class Utils {
     if (colorThemeStr.indexOf('Light') !== -1) {
       colorTheme = 'light';
     }
+    // 要post到frontend的信息
     let messagesToPost = {
       ideAddress: `http://127.0.0.1:${defaultPort}`,
       serverAddr: context.globalState.get('tuningIp'),
@@ -87,6 +88,7 @@ export class Utils {
       ideType: 'isVscode',
       theme: colorTheme,
     };
+    // 需要替换模板中的动态内容
     let extraData = {
       pageLoadingText: '页面加载中...',
     };
