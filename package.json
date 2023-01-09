@@ -4,20 +4,49 @@
   "description": "visit iframe srcs ignoring X-Frame-Options by using http-proxy",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.53.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vsc-ext-iframe.helloWorld"
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vsc-ext-iframe.helloWorld",
-        "title": "Hello World"
+        "command": "vsc-ext-iframe.open",
+        "title": "open iframe"
+      },
+      {
+        "command": "vsc-ext-iframe.address",
+        "title": "hyper tuner set ip and port"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sideTool1",
+          "title": "%kunpeng.tuning.suite%",
+          "icon": "resources/images/tuning.svg"
+        }
+      ]
+    },
+    "views": {
+      "sideTool1": [
+        {
+          "id": "view1",
+          "name": "",
+          "when": ""
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "view1",
+        "contents": "%kunpeng.tuning.login%",
+        "when": ""
       }
     ]
   },
@@ -25,21 +54,15 @@
     "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "package": "vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
-    "@types/glob": "^8.0.0",
-    "@types/mocha": "^10.0.0",
-    "@types/node": "16.x",
-    "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.1",
-    "eslint": "^8.24.0",
-    "glob": "^8.0.3",
-    "mocha": "^10.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.53.0",
     "typescript": "^4.8.4",
-    "@vscode/test-electron": "^2.1.5"
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "http-proxy": "^1.18.1"
   }
 }

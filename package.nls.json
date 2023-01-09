@@ -1,0 +1,4 @@
+{
+  "kunpeng.tuning.suite": "鲲鹏性能分析插件",
+  "kunpeng.tuning.login": "您还未登录。\n[登录](command:vsc-ext-iframe.open)"
+}
