@@ -1,0 +1,10 @@
+{
+  "hostVerifier": [],
+  "autoLoginConfig": [],
+  "disclaimer": [],
+  "pkg_url": "https://kunpeng-repo.obs.cn-north-4.myhuaweicloud.com/Hyper%20Tuner/Hyper%20Tuner%202.5.0/Hyper-Tuner_2.5.0_linux.tar.gz",
+  "key": "https://download.huawei.com/edownload/e/download.do?actionFlag=download%26mid=SUPE_SERTOOL_VERSION%26nid=TV1100000147%26partNo=2005",
+  "tuningConfig": [{ "ip": "90.90.79.136", "port": "8086" }],
+  "tuningVersion": ["2.5.T30"],
+  "configVersion": ["2.5.T30"]
+}
